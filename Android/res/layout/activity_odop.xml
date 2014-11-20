@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/general_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/opaque_black" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@string/ttw_service" />
+
+        <ToggleButton
+            android:id="@+id/on_off_tb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            android:onClick="on_offService" />
+
+
+    </LinearLayout>
+    
+	<Spinner
+	    android:id="@+id/sprCategorie"
+	    android:layout_width="120dp"
+	    android:layout_height="36dp"
+	    android:textSize="12sp"
+	    android:layout_marginBottom="10dp" />
+	
+	<Button
+	    android:id="@+id/btnChangePic"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:onClick="changePicture"
+	    android:text="@string/change_picture"
+	    android:layout_marginBottom="10dp" />
+	
+</LinearLayout>
