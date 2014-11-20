@@ -18,7 +18,6 @@ import com.marchah.onedayonepic.tools.Tools;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -54,7 +53,6 @@ public class MainActivity extends Activity {
 	                isInitTrigger = false;
 	                return;
 	            }
-				Log.v("Debug", "id: " + id);
 				Preferences.saveIdCategorie(getBaseContext(), (int)id);
 				Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_categorie_saved), Toast.LENGTH_LONG).show();
 			}
@@ -124,14 +122,12 @@ public class MainActivity extends Activity {
 	public void on_offService(View view) {
 		if (getResources().getString(R.string.on) == ((ToggleButton)findViewById(R.id.on_off_tb)).getText().toString()) {
 			Preferences.saveIsAuto(getBaseContext(), true);
-			Log.v("Debug", "start");
 			service.setAlarm(this);
 			Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_service_on), Toast.LENGTH_LONG).show();
 		}
 		else {
 			Preferences.saveIsAuto(getBaseContext(), true);
 			// Preferences.saveType(context, false); oui/non ???
-			Log.v("Debug", "stop");
 			service.cancelAlarm(this);
 			Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_service_off), Toast.LENGTH_LONG).show();
 		}
