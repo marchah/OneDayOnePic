@@ -7,12 +7,9 @@ import com.marchah.onedayonepic.tools.Constants;
 import com.marchah.onedayonepic.tools.ImageDownloader;
 import com.marchah.onedayonepic.tools.Preferences;
 import com.marchah.onedayonepic.tools.Tools;
-import com.marchah.onedayonepic.tools.Constants.API;
-
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 public class DDLPictureService extends IntentService {
 

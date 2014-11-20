@@ -1,7 +1,5 @@
 package com.marchah.onedayonepic.service;
 
-import java.util.HashMap;
-
 import com.example.onedayonepic.R;
 import com.marchah.onedayonepic.tools.Preferences;
 import com.marchah.onedayonepic.tools.Tools;
@@ -9,13 +7,12 @@ import com.marchah.onedayonepic.tools.Tools;
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
-public class SchedulingService extends IntentService {
+public class SetWallPaperService extends IntentService {
 
     NotificationCompat.Builder builder;
 	
-    public SchedulingService() {
+    public SetWallPaperService() {
         super("SetWallPaperService");
     }
     
@@ -28,7 +25,7 @@ public class SchedulingService extends IntentService {
 		if (ret != null)
 			Tools.sendNotification(getBaseContext(), ret);
 		else
-			Tools.sendNotification(getBaseContext(), "Wallpaper changed");
+			Tools.sendNotification(getBaseContext(), getResources().getString(R.string.msg_service_wallpaper_changed));
         ServiceReceiver.completeWakefulIntent(intent);
     }
 }

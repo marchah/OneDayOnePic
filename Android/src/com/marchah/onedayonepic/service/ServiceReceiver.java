@@ -26,7 +26,7 @@ public class ServiceReceiver extends WakefulBroadcastReceiver {
     		Preferences.saveType(context, false);
     	}
     	else {
-    		Intent schedulingService = new Intent(context, SchedulingService.class);
+    		Intent schedulingService = new Intent(context, SetWallPaperService.class);
     		startWakefulService(context, schedulingService);
     		Preferences.saveType(context, true);
     	}

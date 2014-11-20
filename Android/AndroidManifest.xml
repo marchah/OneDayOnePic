@@ -28,7 +28,7 @@
             <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
-        <service android:enabled="true" android:name="com.marchah.onedayonepic.service.SchedulingService" />
+        <service android:enabled="true" android:name="com.marchah.onedayonepic.service.SetWallPaperService" />
         <service android:enabled="true" android:name="com.marchah.onedayonepic.service.DDLPictureService" />
         
         <activity
