@@ -2,14 +2,15 @@ package com.marchah.onedayonepic.service;
 
 import java.util.HashMap;
 
+import android.app.IntentService;
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+
 import com.example.onedayonepic.R;
 import com.marchah.onedayonepic.tools.Constants;
 import com.marchah.onedayonepic.tools.ImageDownloader;
 import com.marchah.onedayonepic.tools.Preferences;
 import com.marchah.onedayonepic.tools.Tools;
-import android.app.IntentService;
-import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 
 public class DDLPictureService extends IntentService {
 
@@ -30,6 +31,8 @@ public class DDLPictureService extends IntentService {
 			protected void onPostExecute(String response) {
 				if (response != null)
 					Tools.sendNotification(getBaseContext(), response);
+				else
+					Tools.sendNotification(getBaseContext(), "Wallpaper Downloaded.");
 			}
 		};
 		ddl.execute(Constants.API.Picture);

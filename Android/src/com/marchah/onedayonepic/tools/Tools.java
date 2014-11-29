@@ -107,6 +107,6 @@ public class Tools {
          .setContentText(msg);
 
          mBuilder.setContentIntent(contentIntent);
-         mNotificationManager.notify(Constants.Service.IdNotification, mBuilder.build());
+         mNotificationManager.notify(Constants.Service.IdNotification++, mBuilder.build());
      }
 }

@@ -21,11 +21,21 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
-        <receiver android:name="com.marchah.onedayonepic.service.ServiceReceiver"></receiver>        
+        <receiver android:name="com.marchah.onedayonepic.service.ServiceReceiver"></receiver>
+        <receiver android:name="com.marchah.onedayonepic.service.DDLPictureReceiver">
+            <intent-filter>
+                <action android:name="com.marchah.onedayonepic.intent.action.DDL"></action>
+            </intent-filter>
+        </receiver> 
+        <receiver android:name="com.marchah.onedayonepic.service.SetWallPaperReceiver">
+            <intent-filter>
+                <action android:name="com.marchah.onedayonepic.intent.action.SET"></action>
+            </intent-filter>
+        </receiver>      
         <receiver android:name="com.marchah.onedayonepic.service.ServiceBootReceiver"
                 android:enabled="false">
             <intent-filter>
-            <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            	<action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
         <service android:enabled="true" android:name="com.marchah.onedayonepic.service.SetWallPaperService" />

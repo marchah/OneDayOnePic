@@ -8,14 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.onedayonepic.R;
-import com.marchah.onedayonepic.service.ServiceReceiver;
-import com.marchah.onedayonepic.tools.Constants;
-import com.marchah.onedayonepic.tools.GetRequestAPI;
-import com.marchah.onedayonepic.tools.ImageDownloader;
-import com.marchah.onedayonepic.tools.Preferences;
-import com.marchah.onedayonepic.tools.Tools;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +19,14 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.example.onedayonepic.R;
+import com.marchah.onedayonepic.service.ServiceReceiver;
+import com.marchah.onedayonepic.tools.Constants;
+import com.marchah.onedayonepic.tools.GetRequestAPI;
+import com.marchah.onedayonepic.tools.ImageDownloader;
+import com.marchah.onedayonepic.tools.Preferences;
+import com.marchah.onedayonepic.tools.Tools;
 
 public class MainActivity extends Activity {
 	Spinner sprCategorie;
@@ -82,7 +82,7 @@ public class MainActivity extends Activity {
 							sprCategorie.setSelection(idCategorie);
 				   }
 				   catch (JSONException e) {
-					   Toast.makeText(MainActivity.this, "Error: Invalid Server Response.", Toast.LENGTH_LONG).show();
+					   Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_invalid_api_response), Toast.LENGTH_LONG).show();
 				   }
 			   }
 		   };
@@ -126,8 +126,7 @@ public class MainActivity extends Activity {
 			Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_service_on), Toast.LENGTH_LONG).show();
 		}
 		else {
-			Preferences.saveIsAuto(getBaseContext(), true);
-			// Preferences.saveType(context, false); oui/non ???
+			Preferences.saveIsAuto(getBaseContext(), false);
 			service.cancelAlarm(this);
 			Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_service_off), Toast.LENGTH_LONG).show();
 		}

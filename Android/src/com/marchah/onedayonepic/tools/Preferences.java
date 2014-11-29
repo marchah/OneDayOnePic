@@ -19,32 +19,18 @@ public final class Preferences {
 		   return preferences.getBoolean(Constants.SharedPreferences.IsAuto, false);
 	}
 	
-	public static void saveType(Context context, boolean type) {
-		   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-		   SharedPreferences.Editor editor = preferences.edit();
-		   editor.putBoolean(Constants.SharedPreferences.Type, type);
-		   editor.commit();
-	}
-	
-	public static Boolean getType(Context context) {
-		   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-		   return preferences.getBoolean(Constants.SharedPreferences.Type, true);
-	}
-		
-	
-	
 	public static void saveIdCategorie(Context context, int idCategorie) {
 		   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 		   SharedPreferences.Editor editor = preferences.edit();
 		   editor.putInt(Constants.SharedPreferences.IdCategorie, idCategorie);
 		   editor.commit();
-	   }
+	}
 		
-		public static int getIdCategorie(Context context) {
-		   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-		   return preferences.getInt(Constants.SharedPreferences.IdCategorie, 0);
-		}
-	
+	public static int getIdCategorie(Context context) {
+	   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+	   return preferences.getInt(Constants.SharedPreferences.IdCategorie, 0);
+	}
+
    public static void saveTimerSynchro(Context context, int timerSynchro) {
 	   SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 	   SharedPreferences.Editor editor = preferences.edit();

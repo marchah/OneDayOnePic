@@ -19,6 +19,7 @@
     <string name="msg_service_off">Service Off</string>
     
     <string name="msg_service_wallpaper_changed">Wallpaper changed</string>
+    <string name="msg_invalid_api_response">Error: Invalid Server Response.</string>
     
 
 </resources>
