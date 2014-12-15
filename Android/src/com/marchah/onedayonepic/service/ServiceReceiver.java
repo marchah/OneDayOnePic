@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
-import com.example.onedayonepic.R;
 import com.marchah.onedayonepic.activity.MainActivity;
 import com.marchah.onedayonepic.tools.Constants;
 import com.marchah.onedayonepic.tools.GetRequestAPI;

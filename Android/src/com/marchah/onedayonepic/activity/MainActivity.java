@@ -20,7 +20,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.example.onedayonepic.R;
 import com.marchah.onedayonepic.service.ServiceReceiver;
 import com.marchah.onedayonepic.tools.Constants;
 import com.marchah.onedayonepic.tools.GetRequestAPI;
@@ -34,18 +33,21 @@ public class MainActivity extends Activity {
 	Button btnRefreshing;
 	int idCategorie = 0;
 	boolean isInitTrigger = true;
+	ToggleButton tbStatus = null;
 	
 	ServiceReceiver service = new ServiceReceiver();
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_odop_v2);
+        setContentView(R.layout.activity_odop_v3);
        
         idCategorie = Preferences.getIdCategorie(getBaseContext());
         sprCategorie = (Spinner)findViewById(R.id.sprCategorie);
         pgbRefreshing = (ProgressBar)findViewById(R.id.pgbRefreshing);
         btnRefreshing = (Button)findViewById(R.id.btnChangePic);
+        tbStatus = (ToggleButton)findViewById(R.id.on_off_tb);
+        tbStatus.setChecked(Preferences.getIsAuto(getBaseContext()));
         sprCategorie.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -1,6 +1,5 @@
 package com.marchah.onedayonepic.service;
 
-import com.example.onedayonepic.R;
 import com.marchah.onedayonepic.tools.Preferences;
 import com.marchah.onedayonepic.tools.Tools;
 
@@ -24,8 +23,6 @@ public class SetWallPaperService extends IntentService {
     	String ret = Tools.setWallpaper(getBaseContext(), appName);
 		if (ret != null)
 			Tools.sendNotification(getBaseContext(), ret);
-		else
-			Tools.sendNotification(getBaseContext(), getResources().getString(R.string.msg_service_wallpaper_changed));
         ServiceReceiver.completeWakefulIntent(intent);
     }
 }

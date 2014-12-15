@@ -15,8 +15,8 @@ public final class Constants {
 	}
 	
 	public static class Service {
-		public static int IdNotification = 1;
-		public final static int		DefaultTimer = 4242;
+		public final static int IdNotification = 1;
+		public final static int DefaultTimer = 4242;
 	}
 	
 	public static class IntentAction {
