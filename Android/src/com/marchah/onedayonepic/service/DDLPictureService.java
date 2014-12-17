@@ -6,6 +6,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import com.marchah.onedayonepic.R;
 import com.marchah.onedayonepic.tools.Constants;
 import com.marchah.onedayonepic.tools.ImageDownloader;
 import com.marchah.onedayonepic.tools.Preferences;

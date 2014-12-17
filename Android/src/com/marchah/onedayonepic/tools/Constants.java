@@ -14,6 +14,10 @@ public final class Constants {
 		public final static String 	Index = URL + "/index.php";
 	}
 	
+	public final class Style {
+		public final static String Font = "fonts/pacifico.ttf";
+	}
+	
 	public static class Service {
 		public final static int IdNotification = 1;
 		public final static int DefaultTimer = 4242;

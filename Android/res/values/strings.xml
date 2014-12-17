@@ -14,6 +14,8 @@
     <string name="on">Auto</string>
     <string name="off">Off</string>
     
+    <string name="title">One Day One Pic</string>
+        
     <string name="msg_categorie_saved">Categorie Saved</string>
     <string name="msg_service_on">Service Auto</string>
     <string name="msg_service_off">Service Off</string>

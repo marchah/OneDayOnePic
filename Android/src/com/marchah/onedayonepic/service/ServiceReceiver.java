@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
-import com.marchah.onedayonepic.activity.MainActivity;
+import com.marchah.onedayonepic.R;
 import com.marchah.onedayonepic.tools.Constants;
 import com.marchah.onedayonepic.tools.GetRequestAPI;
 import com.marchah.onedayonepic.tools.ImageDownloader;
@@ -18,7 +18,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.support.v4.content.WakefulBroadcastReceiver;
 
 public class ServiceReceiver extends WakefulBroadcastReceiver {
@@ -42,11 +41,7 @@ public class ServiceReceiver extends WakefulBroadcastReceiver {
         calendar.set(Calendar.AM_PM, Calendar.AM);
         calendar.set(Calendar.HOUR_OF_DAY, 7);
         calendar.set(Calendar.MINUTE, 30);
-        
-        /*calendar.set(Calendar.AM_PM, Calendar.PM);
-        calendar.set(Calendar.HOUR_OF_DAY, 11);
-        calendar.set(Calendar.MINUTE, 10);*/
-        
+             
     	amSetWallpaper.setInexactRepeating(AlarmManager.RTC_WAKEUP,  
                 calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, SetPendingIntent);
     }
@@ -63,10 +58,6 @@ public class ServiceReceiver extends WakefulBroadcastReceiver {
         calendar.set(Calendar.HOUR_OF_DAY, 1);
         calendar.set(Calendar.MINUTE, 1);
         calendar.set(Calendar.SECOND, Preferences.getTimerSynchro(context));
-        
-       /* calendar.set(Calendar.AM_PM, Calendar.PM);
-        calendar.set(Calendar.HOUR_OF_DAY, 11);
-        calendar.set(Calendar.MINUTE, 5);*/
         
     	amDDLWallpaper.setInexactRepeating(AlarmManager.RTC_WAKEUP,  
                 calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, DDLPendingIntent);

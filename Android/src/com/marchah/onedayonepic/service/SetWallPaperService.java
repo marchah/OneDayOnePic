@@ -1,5 +1,6 @@
 package com.marchah.onedayonepic.service;
 
+import com.marchah.onedayonepic.R;
 import com.marchah.onedayonepic.tools.Preferences;
 import com.marchah.onedayonepic.tools.Tools;
 

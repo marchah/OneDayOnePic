@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,25 +18,30 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.marchah.onedayonepic.R;
 import com.marchah.onedayonepic.service.ServiceReceiver;
 import com.marchah.onedayonepic.tools.Constants;
+import com.marchah.onedayonepic.tools.CustomAdapter;
 import com.marchah.onedayonepic.tools.GetRequestAPI;
 import com.marchah.onedayonepic.tools.ImageDownloader;
 import com.marchah.onedayonepic.tools.Preferences;
 import com.marchah.onedayonepic.tools.Tools;
 
 public class MainActivity extends Activity {
-	Spinner sprCategorie;
-	ProgressBar pgbRefreshing;
-	Button btnRefreshing;
-	int idCategorie = 0;
-	boolean isInitTrigger = true;
-	ToggleButton tbStatus = null;
+	private Spinner sprCategorie;
+	private ProgressBar pgbRefreshing;
+	private Button btnRefreshing;
+	private int idCategorie = 0;
+	private boolean isInitTrigger = true;
+	private ToggleButton tbStatus = null;
 	
-	ServiceReceiver service = new ServiceReceiver();
+	private ServiceReceiver service = new ServiceReceiver();
+	
+	private Typeface typeFont;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +51,18 @@ public class MainActivity extends Activity {
         idCategorie = Preferences.getIdCategorie(getBaseContext());
         sprCategorie = (Spinner)findViewById(R.id.sprCategorie);
         pgbRefreshing = (ProgressBar)findViewById(R.id.pgbRefreshing);
-        btnRefreshing = (Button)findViewById(R.id.btnChangePic);
+        btnRefreshing = (Button)findViewById(R.id.btnChangePic);        
         tbStatus = (ToggleButton)findViewById(R.id.on_off_tb);
         tbStatus.setChecked(Preferences.getIsAuto(getBaseContext()));
+        
+        typeFont = Typeface.createFromAsset(getAssets(),Constants.Style.Font); 
+        if (typeFont != null) {
+        	((TextView)findViewById(R.id.titleTV)).setTypeface(typeFont);
+        	((TextView)findViewById(R.id.serviceTV)).setTypeface(typeFont);
+        	btnRefreshing.setTypeface(typeFont);
+        	tbStatus.setTypeface(typeFont);
+        }
+     	       
         sprCategorie.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -73,13 +88,10 @@ public class MainActivity extends Activity {
 						   JSONObject categorie = jArray.getJSONObject(i);
 						   if (categorie.isNull("id") || categorie.isNull("name"))
 							   throw new JSONException("");
-						   //String id = categorie.getString("id");
 						   String name = categorie.getString("name");
 						   listCategorie.add(name);
 					   }
-					   ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this,
-								android.R.layout.simple_spinner_item, listCategorie);
-							dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					   CustomAdapter dataAdapter = new CustomAdapter(MainActivity.this, listCategorie, typeFont);
 							sprCategorie.setAdapter(dataAdapter);
 							sprCategorie.setSelection(idCategorie);
 				   }

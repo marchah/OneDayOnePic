@@ -5,37 +5,51 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/opaque_black" >
+    android:background="@color/opaque_white" >
 
-    <LinearLayout
+     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="vertical" >
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="10dp"
+        android:background="@drawable/layout_bg" >
     
+         <TextView
+             android:id="@+id/titleTV"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/title"
+             android:textSize="25sp"
+             android:textColor="@color/text_color" />
+         
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" >
+        android:paddingTop="10dp" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/serviceTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:textStyle="bold"
-            android:text="@string/ttw_service" />
+            android:paddingRight="20dp"
+            android:text="@string/ttw_service"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ToggleButton
             android:id="@+id/on_off_tb"
             android:layout_height="wrap_content"
-            android:layout_width="65dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
             android:textOff="@string/off"
             android:textOn="@string/on"
+            android:textColor="@color/text_color"
             android:onClick="on_offService" />
 
     </LinearLayout>
@@ -43,28 +57,30 @@
 	<Spinner
 	    android:id="@+id/sprCategorie"
 	    android:layout_width="120dp"
-	    android:layout_height="36dp"
-	    android:textSize="12sp"
-	    android:layout_marginBottom="10dp" />
+	    android:layout_height="wrap_content"
+	    android:textSize="12sp" />
 	
 	<LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginBottom="10dp" >
+        android:paddingTop="10dp">
    
 		<ProgressBar
 		    android:id="@+id/pgbRefreshing"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:visibility="invisible" />
+		    android:visibility="invisible"
+		    android:theme="@style/AppTheme" />
 	
 		<Button
 		    android:id="@+id/btnChangePic"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:onClick="changePicture"
+		    android:paddingLeft="10dp"
+		    android:textColor="@color/text_color"
 		    android:text="@string/change_picture" />
 		
 	</LinearLayout>

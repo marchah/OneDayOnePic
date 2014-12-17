@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.FileChannel;
 
-import com.example.onedayonepic.R;
+import com.marchah.onedayonepic.R;
 import com.marchah.onedayonepic.activity.MainActivity;
 
 import android.app.NotificationManager;

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="opaque_black" type="color">#40808080</item>
+    <color name="opaque_white">#40808080</color>
+    <color name="opaque_black_50">#80000000</color>
+    <color name="opaque_black_40">#66000000</color>
+    <color name="opaque_black_30">#4D000000</color>  
+    <color name="black">#000000</color>
+    <color name="text_color">#61FF87</color>
 </resources>
