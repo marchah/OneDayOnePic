@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_odop_v3);
+        setContentView(R.layout.activity_odop_v4);
        
         idCategorie = Preferences.getIdCategorie(getBaseContext());
         sprCategorie = (Spinner)findViewById(R.id.sprCategorie);
@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
         typeFont = Typeface.createFromAsset(getAssets(),Constants.Style.Font); 
         if (typeFont != null) {
         	((TextView)findViewById(R.id.titleTV)).setTypeface(typeFont);
-        	((TextView)findViewById(R.id.serviceTV)).setTypeface(typeFont);
+        	//((TextView)findViewById(R.id.serviceTV)).setTypeface(typeFont);
         	btnRefreshing.setTypeface(typeFont);
         	tbStatus.setTypeface(typeFont);
         }
@@ -71,7 +71,8 @@ public class MainActivity extends Activity {
 	                return;
 	            }
 				Preferences.saveIdCategorie(getBaseContext(), (int)id);
-				Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_categorie_saved), Toast.LENGTH_LONG).show();
+				changePicture(null);
+				//Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_categorie_saved), Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}

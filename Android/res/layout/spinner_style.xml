@@ -5,8 +5,9 @@
    <TextView  
      android:id="@+id/itemCategorieSpr"  
      android:layout_width="match_parent"  
-     android:layout_height="wrap_content"
+     android:layout_height="40dp"
      android:textAppearance="?android:attr/textAppearanceLarge"  
      android:paddingLeft="5dp"
+     android:textSize="@dimen/text"
      android:gravity="center" />  
  </LinearLayout> 

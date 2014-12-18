@@ -15,7 +15,7 @@ public final class Constants {
 	}
 	
 	public final class Style {
-		public final static String Font = "fonts/pacifico.ttf";
+		public final static String Font = "fonts/ComingSoon.ttf";
 	}
 	
 	public static class Service {
