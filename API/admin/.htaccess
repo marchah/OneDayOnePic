@@ -1,0 +1,3 @@
+order deny,allow
+deny from all
+allow from 88.184.67.32
