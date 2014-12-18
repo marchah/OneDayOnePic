@@ -56,7 +56,6 @@ public abstract class GetRequestAPI extends AsyncTask<String, Void, String> {
                 out.close();
                 responseString = out.toString();
             } else{
-                //Closes the connection.
                 response.getEntity().getContent().close();
                 throw new IOException(statusLine.getReasonPhrase());
             }

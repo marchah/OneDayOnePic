@@ -7,46 +7,74 @@
     android:gravity="center"
     android:background="@color/opaque_white" >
 
+     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        android:background="@drawable/layout_bg" >
+    
+         <TextView
+             android:id="@+id/titleTV"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/title"
+             android:textSize="@dimen/title"
+             android:textColor="@color/text_color" />
+         
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="@string/ttw_service" />
+        android:paddingTop="30dp">
 
         <ToggleButton
             android:id="@+id/on_off_tb"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_width="150dp"
+            
             android:textOff="@string/off"
+            android:textSize="@dimen/text"
             android:textOn="@string/on"
+            android:textColor="@color/text_color"
             android:onClick="on_offService" />
-
 
     </LinearLayout>
     
 	<Spinner
 	    android:id="@+id/sprCategorie"
-	    android:layout_width="120dp"
-	    android:layout_height="36dp"
-	    android:textSize="12sp"
-	    android:layout_marginBottom="10dp" />
-	
-	<Button
-	    android:id="@+id/btnChangePic"
-	    android:layout_width="wrap_content"
+	    android:layout_width="150dp"
 	    android:layout_height="wrap_content"
-	    android:onClick="changePicture"
-	    android:text="@string/change_picture"
-	    android:layout_marginBottom="10dp" />
+	    android:textSize="@dimen/text" />
+	
+	<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="20dp">
+   
+		<ProgressBar
+		    android:id="@+id/pgbRefreshing"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:visibility="invisible"
+		    android:theme="@style/AppTheme" />
+	
+		<Button
+		    android:id="@+id/btnChangePic"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:onClick="changePicture"
+		    android:paddingLeft="10dp"
+		    android:textColor="@color/text_color"
+		    android:text="@string/change_picture" 
+		    android:textSize="@dimen/text" />
+		
+	</LinearLayout>
+	
+	</LinearLayout>
 	
 </LinearLayout>

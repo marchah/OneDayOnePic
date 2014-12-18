@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -46,7 +45,7 @@ public class MainActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_odop_v4);
+        setContentView(R.layout.activity_odop);
        
         idCategorie = Preferences.getIdCategorie(getBaseContext());
         sprCategorie = (Spinner)findViewById(R.id.sprCategorie);
@@ -58,7 +57,6 @@ public class MainActivity extends Activity {
         typeFont = Typeface.createFromAsset(getAssets(),Constants.Style.Font); 
         if (typeFont != null) {
         	((TextView)findViewById(R.id.titleTV)).setTypeface(typeFont);
-        	//((TextView)findViewById(R.id.serviceTV)).setTypeface(typeFont);
         	btnRefreshing.setTypeface(typeFont);
         	tbStatus.setTypeface(typeFont);
         }
@@ -72,7 +70,6 @@ public class MainActivity extends Activity {
 	            }
 				Preferences.saveIdCategorie(getBaseContext(), (int)id);
 				changePicture(null);
-				//Toast.makeText(MainActivity.this, getResources().getString(R.string.msg_categorie_saved), Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
