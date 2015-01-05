@@ -1,0 +1,11 @@
+{
+  "name": "OneDayOnePic",
+  "description": "OneDayOnePic API",
+  "private": true,
+  "version": "0.0.3",
+  "main": "app.js",
+  "dependencies" : {
+    "express" : "~4.10.7",
+      "mysql": "~2.5.4"
+  }
+}
