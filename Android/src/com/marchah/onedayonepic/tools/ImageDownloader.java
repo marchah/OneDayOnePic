@@ -20,9 +20,8 @@ public abstract class ImageDownloader extends AsyncTask<String, Integer, String>
 	protected HashMap<String, Integer> _mapData;
 	protected List<BasicNameValuePair> _params;
 	
-	public ImageDownloader(String appName, HashMap<String, Integer> mapData) {
+	public ImageDownloader(String appName) {
 		_appName = appName;
-		_mapData = mapData;
 		_params = new LinkedList<BasicNameValuePair>();
 	}
 	

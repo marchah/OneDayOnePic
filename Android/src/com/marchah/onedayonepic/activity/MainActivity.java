@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 	private ProgressBar pgbRefreshing;
 	private Button btnRefreshing;
 	private int idCategorie = 0;
+	private int idUser = 0;
 	private boolean isInitTrigger = true;
 	private ToggleButton tbStatus = null;
 	
@@ -48,6 +49,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_odop);
        
         idCategorie = Preferences.getIdCategorie(getBaseContext());
+        idUser = Preferences.getIdUser(getBaseContext());
         sprCategorie = (Spinner)findViewById(R.id.sprCategorie);
         pgbRefreshing = (ProgressBar)findViewById(R.id.pgbRefreshing);
         btnRefreshing = (Button)findViewById(R.id.btnChangePic);        
@@ -74,14 +76,12 @@ public class MainActivity extends Activity {
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
         });
-        HashMap<String, String> data = new HashMap<String, String>();
-		data.put("nameRequest", "getListCategories");
-        GetRequestAPI listCategorieRequest = new GetRequestAPI(data) {
+        GetRequestAPI listCategorieRequest = new GetRequestAPI() {
 			   protected void onPostExecute(String response) {
 				   try {
 					   JSONArray jArray = new JSONArray(response);
 					   List<String> listCategorie = new ArrayList<String>();
-					   listCategorie.add("All");
+					   listCategorie.add(getString(R.string.categories_all));
 					   for (int i = 0; jArray != null && i != jArray.length(); i++) {
 						   JSONObject categorie = jArray.getJSONObject(i);
 						   if (categorie.isNull("id") || categorie.isNull("name"))
@@ -98,20 +98,38 @@ public class MainActivity extends Activity {
 				   }
 			   }
 		   };
-		   listCategorieRequest.execute(Constants.API.Index);
+	listCategorieRequest.execute(Constants.API.Categories + getString(R.string.language));
 	}
+
+    private void getInfo(final Context context) {
+        GetRequestAPI timerSynchroRequest = new GetRequestAPI() {
+		   protected void onPostExecute(String response) {
+			   try {
+				   JSONObject object = new JSONObject(response);
+				   Preferences.saveTimerSynchro(context, Integer.parseInt(object.getString("time")));
+				   Preferences.saveTimerSynchro(context, Integer.parseInt(object.getString("userId")));
+			   }
+			   catch (Exception e) {
+				   Preferences.saveTimerSynchro(context, Constants.Service.DefaultTimer);
+				   Tools.sendNotification(context, context.getResources().getString(R.string.msg_invalid_api_response));
+			   }
+		   }
+	    };
+		timerSynchroRequest.execute(Constants.API.Init);
+    }
+
 	
 	@Override
 	public void onResume(){
-		isInitTrigger = true;
-	    super.onResume();
+	    isInitTrigger = true;
+	    super.onResume();            
+	    if (Preferences.getTimerSynchro(context) <= 0 || Preferences.getIdUser(context) <= 0)
+		getInfo(context);
 	}
 	
 	public void changePicture(View view) {
 		final String appName = getResources().getString(R.string.app_name);
-    	HashMap<String, Integer> data = new HashMap<String, Integer>();
-		data.put("idCategorie", Preferences.getIdCategorie(getBaseContext()));
-		ImageDownloader ddl = new ImageDownloader(appName, data) {
+		ImageDownloader ddl = new ImageDownloader(appName) {
 			protected void onPostExecute(String response) {
 				pgbRefreshing.setVisibility(ProgressBar.INVISIBLE);
 				btnRefreshing.setClickable(true);
@@ -126,7 +144,7 @@ public class MainActivity extends Activity {
 				}
 			}
 		};
-		ddl.execute(Constants.API.Picture);
+		ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(context) + "/" + Preferences.getIdUser(context));
 		pgbRefreshing.setVisibility(ProgressBar.VISIBLE);
 		btnRefreshing.setClickable(false);
 	}

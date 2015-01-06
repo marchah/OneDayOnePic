@@ -65,47 +65,20 @@ public class ServiceReceiver extends WakefulBroadcastReceiver {
     
     private void getPicture(final Context context) {
     	final String appName = context.getResources().getString(R.string.app_name);
-    	HashMap<String, Integer> data = new HashMap<String, Integer>();
-		data.put("idCategorie", Preferences.getIdCategorie(context));
-		ImageDownloader ddl = new ImageDownloader(appName, data) {
+
+		ImageDownloader ddl = new ImageDownloader(appName) {
 			protected void onPostExecute(String response) {
 				if (response != null)
 					Tools.sendNotification(context, response);
 				setSetWallpaperAlarm(context);
-	        	setDDLPictureAlarm(context);
+				setDDLPictureAlarm(context);
 			}
 		};
-		ddl.execute(Constants.API.Picture);
+		ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(context) + "/" + Preferences.getIdUser(context));
     }
-    
-    private void getTimerSynchro(final Context context) {
-    	HashMap<String, String> data = new HashMap<String, String>();
-		data.put("nameRequest", "getTimeSynchro");
-        GetRequestAPI timerSynchroRequest = new GetRequestAPI(data) {
-		   protected void onPostExecute(String response) {
-			   try {
-				   JSONObject object = new JSONObject(response);
-				   Preferences.saveTimerSynchro(context, Integer.parseInt(object.getString("time")));
-			   }
-			   catch (Exception e) {
-				   Preferences.saveTimerSynchro(context, Constants.Service.DefaultTimer);
-				   Tools.sendNotification(context, context.getResources().getString(R.string.msg_invalid_api_response));
-			   }
-			   getPicture(context);
-		   }
-	    };
-		timerSynchroRequest.execute(Constants.API.Index);
-    }
-    
-    public void setAlarm(final Context context) {
-        int timer = Preferences.getTimerSynchro(context);
         
-        if (timer < 0) {
-        	getTimerSynchro(context);
-        }
-        else {
-        	getPicture(context);
-        }
+    public void setAlarm(final Context context) {
+	getPicture(context);
         ComponentName receiver = new ComponentName(context, ServiceBootReceiver.class);
         PackageManager pm = context.getPackageManager();
 

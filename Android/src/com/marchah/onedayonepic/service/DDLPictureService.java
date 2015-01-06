@@ -25,15 +25,13 @@ public class DDLPictureService extends IntentService {
     	if (!Preferences.getIsAuto(getBaseContext()))
     		return ;
     	final String appName = getResources().getString(R.string.app_name);
-    	HashMap<String, Integer> data = new HashMap<String, Integer>();
-		data.put("idCategorie", Preferences.getIdCategorie(getBaseContext()));
-		ImageDownloader ddl = new ImageDownloader(appName, data) {
+		ImageDownloader ddl = new ImageDownloader(appName) {
 			protected void onPostExecute(String response) {
 				if (response != null)
 					Tools.sendNotification(getBaseContext(), response);
 			}
 		};
-		ddl.execute(Constants.API.Picture);
+		ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(context) + "/" + Preferences.getIdUser(context));
         ServiceReceiver.completeWakefulIntent(intent);
     }
 }

@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">OneDayOnePic</string>
+    <string name="categories_all">Todos</string>
     <string name="change_picture">Siguiente foto</string>
     <string name="app_alert">OneDayOnePic Alerta</string>
     <string name="on">Modo Auto</string>
