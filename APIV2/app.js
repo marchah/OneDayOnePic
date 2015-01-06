@@ -33,7 +33,7 @@ app.get('/init', function(req, res) {
 		res.sendStatus(500);
 		return ;
 	    }
-	    res.send({userId: results.insertId, timeSynchro: results.insertId});
+	    res.send({userId: results.insertId, time: results.insertId});
 	});
     });
 });
