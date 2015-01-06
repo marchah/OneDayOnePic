@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OneDayOnePic</string>
+    <string name="change_picture">Photo Suivante</string>
+    <string name="app_alert">OneDayOnePic Alerte</string>
+    <string name="on">Mode Auto</string>
+    <string name="off">Mode Manuel</string>
+    
+    <string name="title">One Day One Pic</string>
+    <string name="msg_service_on">Service Auto</string>
+    <string name="msg_service_off">Service Arrêt</string>
+    
+    <string name="msg_service_wallpaper_changed">Fond d'écran changé</string>
+    <string name="msg_invalid_api_response">Erreur: Invalide Réponse Serveur.</string>
+
+    <string name="language">fr</string>
+    
+</resources>

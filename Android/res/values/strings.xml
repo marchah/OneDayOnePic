@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">OneDayOnePic</string>
-    <string name="title_activity_main">One Day One Pic</string>
     <string name="change_picture">Next Pic</string>
     <string name="app_alert">OneDayOnePic Alert</string>
     <string name="on">Mode Auto</string>
@@ -14,5 +13,7 @@
     
     <string name="msg_service_wallpaper_changed">Wallpaper changed</string>
     <string name="msg_invalid_api_response">Error: Invalid Server Response.</string>
+
+    <string name="language">en</string>
     
 </resources>
