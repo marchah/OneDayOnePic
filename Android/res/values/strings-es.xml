@@ -14,7 +14,8 @@
     
     <string name="msg_service_wallpaper_changed">Fondo de pantalla cambió</string>
     <string name="msg_invalid_api_response">Error: Respuesta Del Servidor No Válido.</string>
+    <string name="msg_no_internet">Error: Sin Conexión A Internet.</string>
 
-    <string name="language">fr</string>
+    <string name="language">es</string>
     
 </resources>

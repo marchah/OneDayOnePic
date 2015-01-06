@@ -46,6 +46,13 @@ public class Tools {
 		return (mExternalStorageAvailable) && (mExternalStorageWriteable);
 	}
 	
+    public boolean isOnline() {
+	ConnectivityManager cm =
+	    (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	NetworkInfo netInfo = cm.getActiveNetworkInfo();
+	return netInfo != null && netInfo.isConnected);
+    }
+    
 	private static void copy(File src, File dst) throws IOException {
 	    FileInputStream inStream = new FileInputStream(src);
 	    FileOutputStream outStream = new FileOutputStream(dst);

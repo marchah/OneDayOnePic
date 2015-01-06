@@ -98,7 +98,10 @@ public class MainActivity extends Activity {
 				   }
 			   }
 		   };
-	listCategorieRequest.execute(Constants.API.Categories + getString(R.string.language));
+	if (!Tools.isOnline())
+	    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.SHORT_LENGTH).show();
+	else
+	    listCategorieRequest.execute(Constants.API.Categories + getString(R.string.language));
 	}
 
     private void getInfo(final Context context) {
@@ -115,7 +118,10 @@ public class MainActivity extends Activity {
 			   }
 		   }
 	    };
-		timerSynchroRequest.execute(Constants.API.Init);
+	if (!Tools.isOnline())
+	    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.SHORT_LENGTH).show();
+	else
+	    timerSynchroRequest.execute(Constants.API.Init);
     }
 
 	
@@ -138,15 +144,19 @@ public class MainActivity extends Activity {
 				else {
 					String ret = Tools.setWallpaper(getBaseContext(), appName);
 					if (ret != null)
-						Toast.makeText(MainActivity.this, ret, Toast.LENGTH_LONG).show();
+					    Toast.makeText(MainActivity.this, ret, Toast.LENGTH_LONG).show();
 					else
-						Toast.makeText(MainActivity.this, "Wallpaper changed", Toast.LENGTH_LONG).show();
+					    Toast.makeText(MainActivity.this, getString(R.string.msg_service_wallpaper_changed), Toast.LENGTH_LONG).show();
 				}
 			}
 		};
-		ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(context) + "/" + Preferences.getIdUser(context));
-		pgbRefreshing.setVisibility(ProgressBar.VISIBLE);
-		btnRefreshing.setClickable(false);
+		if (!Tools.isOnline())
+		    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.SHORT_LENGTH).show();
+		else {
+		    ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(context) + "/" + Preferences.getIdUser(context));
+		    pgbRefreshing.setVisibility(ProgressBar.VISIBLE);
+		    btnRefreshing.setClickable(false);
+		}
 	}
 	
 	public void on_offService(View view) {

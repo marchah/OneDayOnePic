@@ -14,6 +14,7 @@
     
     <string name="msg_service_wallpaper_changed">Wallpaper changed</string>
     <string name="msg_invalid_api_response">Error: Invalid Server Response.</string>
+    <string name="msg_no_internet">Error: No Internet Connection.</string>
 
     <string name="language">en</string>
     
