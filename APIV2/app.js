@@ -57,11 +57,27 @@ app.get('/categories', function(req, res) {
     });
 });
 
+
+app.get('/categories/:language', function(req, res) {
+    pool.getConnection(function(err, connection) {
+	if (err) {
+	    console.log(err);
+	    res.sendstatus(500);
+	    return ;
+	}
+	connection.query('SELECT idcategorie AS `id`, namecategorie AS `name` FROM language WHERE language='+connection.escape(req.params.language)+' ORDER BY id', function(err, rows, fields) {
+	    connection.release();
+	    if (err) {
+		console.log(err);
+		res.sendStatus(500);
+		return ;
+	    }
+	    res.send(rows);
+	});
+    });
+});
+
 app.get('/picture/:idCategorie(\\d+)/:idUser(\\d+)', function(req, res) {
-//    req.params.categorie
-//req.params.idUser
-
-
     pool.getConnection(function(err, connection) {
 	if (err) {
 	    console.log(err);
