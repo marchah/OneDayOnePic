@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -98,8 +99,8 @@ public class MainActivity extends Activity {
 				   }
 			   }
 		   };
-	if (!Tools.isOnline())
-	    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.SHORT_LENGTH).show();
+	if (!Tools.isOnline(getBaseContext()))
+	    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.LENGTH_LONG).show();
 	else
 	    listCategorieRequest.execute(Constants.API.Categories + getString(R.string.language));
 	}
@@ -118,8 +119,8 @@ public class MainActivity extends Activity {
 			   }
 		   }
 	    };
-	if (!Tools.isOnline())
-	    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.SHORT_LENGTH).show();
+	if (!Tools.isOnline(getBaseContext()))
+	    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.LENGTH_LONG).show();
 	else
 	    timerSynchroRequest.execute(Constants.API.Init);
     }
@@ -129,8 +130,8 @@ public class MainActivity extends Activity {
 	public void onResume(){
 	    isInitTrigger = true;
 	    super.onResume();            
-	    if (Preferences.getTimerSynchro(context) <= 0 || Preferences.getIdUser(context) <= 0)
-		getInfo(context);
+	    if (Preferences.getTimerSynchro(getBaseContext())<= 0 || Preferences.getIdUser(getBaseContext()) <= 0)
+	    	getInfo(getBaseContext());
 	}
 	
 	public void changePicture(View view) {
@@ -150,10 +151,10 @@ public class MainActivity extends Activity {
 				}
 			}
 		};
-		if (!Tools.isOnline())
-		    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.SHORT_LENGTH).show();
+		if (!Tools.isOnline(getBaseContext()))
+		    Toast.makeText(getBaseContext(), getString(R.string.msg_no_internet), Toast.LENGTH_LONG).show();
 		else {
-		    ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(context) + "/" + Preferences.getIdUser(context));
+		    ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(getBaseContext()) + "/" + Preferences.getIdUser(getBaseContext()));
 		    pgbRefreshing.setVisibility(ProgressBar.VISIBLE);
 		    btnRefreshing.setClickable(false);
 		}

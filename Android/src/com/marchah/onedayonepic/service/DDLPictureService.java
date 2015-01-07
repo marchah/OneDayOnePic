@@ -31,7 +31,7 @@ public class DDLPictureService extends IntentService {
 					Tools.sendNotification(getBaseContext(), response);
 			}
 		};
-		ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(context) + "/" + Preferences.getIdUser(context));
+		ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(getBaseContext()) + "/" + Preferences.getIdUser(getBaseContext()));
         ServiceReceiver.completeWakefulIntent(intent);
     }
 }

@@ -18,6 +18,8 @@ import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 
@@ -46,11 +48,11 @@ public class Tools {
 		return (mExternalStorageAvailable) && (mExternalStorageWriteable);
 	}
 	
-    public boolean isOnline() {
-	ConnectivityManager cm =
-	    (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-	NetworkInfo netInfo = cm.getActiveNetworkInfo();
-	return netInfo != null && netInfo.isConnected);
+    public static boolean isOnline(Context context) {
+    	ConnectivityManager cm =
+    			(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    	NetworkInfo netInfo = cm.getActiveNetworkInfo();
+    	return netInfo != null && netInfo.isConnected();
     }
     
 	private static void copy(File src, File dst) throws IOException {
