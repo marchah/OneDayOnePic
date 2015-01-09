@@ -1,13 +1,9 @@
 package com.marchah.onedayonepic.service;
 
 import java.util.Calendar;
-import java.util.HashMap;
-
-import org.json.JSONObject;
 
 import com.marchah.onedayonepic.R;
 import com.marchah.onedayonepic.tools.Constants;
-import com.marchah.onedayonepic.tools.GetRequestAPI;
 import com.marchah.onedayonepic.tools.ImageDownloader;
 import com.marchah.onedayonepic.tools.Preferences;
 import com.marchah.onedayonepic.tools.Tools;

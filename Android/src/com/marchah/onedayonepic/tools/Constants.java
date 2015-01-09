@@ -10,7 +10,7 @@ public final class Constants {
     }
     
     public final class API {
-	private final static String URL = ;
+	private final static String URL = "http://5.135.163.236:3344";
 	public final static String Picture = URL + "/picture/";
 	public final static String Init = URL + "/init";
 	public final static String Categories = URL + "/categories/";

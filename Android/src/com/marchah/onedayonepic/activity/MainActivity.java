@@ -1,7 +1,6 @@
 package com.marchah.onedayonepic.activity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -111,7 +110,7 @@ public class MainActivity extends Activity {
 			   try {
 				   JSONObject object = new JSONObject(response);
 				   Preferences.saveTimerSynchro(context, Integer.parseInt(object.getString("time")));
-				   Preferences.saveTimerSynchro(context, Integer.parseInt(object.getString("userId")));
+				   Preferences.saveIdUser(context, Integer.parseInt(object.getString("userId")));
 			   }
 			   catch (Exception e) {
 				   Preferences.saveTimerSynchro(context, Constants.Service.DefaultTimer);
