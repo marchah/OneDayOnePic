@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OneDayOnePic</string>
+    <string name="categories_all">Tutto</string>
+    <string name="change_picture">Immagine Successiva</string>
+    <string name="app_alert">OneDayOnePic Allarme</string>
+    <string name="on">Modalità Automatica</string>
+    <string name="off">Modalità Manuale</string>
+    
+    <string name="title">One Day One Pic</string>
+    <string name="msg_service_on">Servizio Automatico</string>
+    <string name="msg_service_off">Servizio Spento</string>
+    
+    <string name="msg_service_wallpaper_changed">Wallpaper cambiato</string>
+    <string name="msg_invalid_api_response">Errore: Risposta Del Server Invalida.</string>
+    <string name="msg_no_internet">Errore: Nessuna Connessione Internet.</string>
+
+    <string name="language">it</string>
+    
+</resources>
