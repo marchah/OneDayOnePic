@@ -5,7 +5,8 @@
   "version": "0.0.4",
   "main": "app.js",
   "dependencies" : {
-    "express" : "~4.10.7",
+      "express" : "~4.10.7",
+      "morgan": "~1.0.0",
       "mysql": "~2.5.4"
   }
 }

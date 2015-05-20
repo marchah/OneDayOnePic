@@ -2,9 +2,12 @@ global.PATH_API = __dirname;
 
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 5060;
+var port = process.env.PORT || 3344;
 
-var mysql      = require('mysql');
+var mysql = require('mysql');
+var fs = require('fs');
+
+var morgan = require('morgan');
 
 var configDB = require('./config/database.js');
 var constantes = require('./config/constantes.js');
@@ -15,6 +18,8 @@ var pool = mysql.createPool({
   password : configDB.password,
   database : configDB.database
 });
+
+app.use(morgan('dev')); // log every request to the console
 
 pool.query(configDB.database);
 
@@ -103,13 +108,21 @@ app.get('/picture/:idCategorie(\\d+)/:idUser(\\d+)', function(req, res) {
 		    res.sendStatus(500);
 		    return ;
 		}
-		res.sendFile(global.PATH_API + row[0].path, function (err) {
+
+/*		res.sendFile(global.PATH_API + row[0].path, function(err) {
 		    if (err) {
 			console.log(err);
 			res.sendStatus(500);
 			return ;
 		    }
-		});
+		    console.log("debing end");
+		});*/
+
+		var img = fs.readFileSync(global.PATH_API + row[0].path);
+		res.writeHead(200, {'Content-Type': 'image/jpg' });
+		res.end(img, 'binary');
+
+
 		var query2 = '';
 		if (saveLastPic.length > 0)
 		    query2 = 'UPDATE save_last_pic SET idUSer=' + connection.escape(req.params.idUser) + ', idpicture=' + row[0].id + ' WHERE id=' + saveLastPic[0].id;
