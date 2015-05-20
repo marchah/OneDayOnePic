@@ -22,9 +22,8 @@ public abstract class GetRequestAPI extends AsyncTask<String, Void, String> {
 	protected HashMap<String, String> _mapData;
 	protected List<BasicNameValuePair> _params;
 	
-	public GetRequestAPI(HashMap<String, String> mapData) {
-		_mapData = mapData;
-		_params = new LinkedList<BasicNameValuePair>();
+	public GetRequestAPI() {
+	    _params = new LinkedList<BasicNameValuePair>();
 	}
 	
 	@Override

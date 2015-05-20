@@ -1,7 +1,5 @@
 package com.marchah.onedayonepic.service;
 
-import java.util.HashMap;
-
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
@@ -25,15 +23,13 @@ public class DDLPictureService extends IntentService {
     	if (!Preferences.getIsAuto(getBaseContext()))
     		return ;
     	final String appName = getResources().getString(R.string.app_name);
-    	HashMap<String, Integer> data = new HashMap<String, Integer>();
-		data.put("idCategorie", Preferences.getIdCategorie(getBaseContext()));
-		ImageDownloader ddl = new ImageDownloader(appName, data) {
+		ImageDownloader ddl = new ImageDownloader(appName) {
 			protected void onPostExecute(String response) {
 				if (response != null)
 					Tools.sendNotification(getBaseContext(), response);
 			}
 		};
-		ddl.execute(Constants.API.Picture);
+		ddl.execute(Constants.API.Picture + Preferences.getIdCategorie(getBaseContext()) + "/" + Preferences.getIdUser(getBaseContext()));
         ServiceReceiver.completeWakefulIntent(intent);
     }
 }
